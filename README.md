@@ -23,14 +23,14 @@ cd go-ecommerce-api
 2. Configure the database in `config`:
 
 ```env
-DATABASE_URL=postgres://user:password@localhost:5432/ecomdb?sslmode=disable
+GOOSE_DBSTRING=postgres://user:password@localhost:5432/ecomdb?sslmode=disable
 APP_ADDRESS=:8080
 ```
 
 3. Run migrations with Goose:
 
 ```bash
-goose -dir migrations postgres "$DATABASE_URL" up
+goose -dir migrations postgres "$DATABASE_URL" up or just goose up if you set the env
 ```
 
 4. Generate SQL query code with sqlc:
@@ -42,7 +42,7 @@ sqlc generate
 5. Run the server:
 
 ```bash
-go run main.go
+go run cmd/*.go
 ```
 
 Server starts at `http://localhost:8080`.

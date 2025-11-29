@@ -13,7 +13,7 @@ func main() {
 	ctx := context.Background()
 
 	appconfig := appconfig{
-		Address: ":8080",
+		Address: env.GetString("APP_ADDRESS", ":8080"),
 		DB: dbConfig{
 			DatabaseURL: env.GetString("GOOSE_DBSTRING", "host=localhost port=5433 user=postgres password=postgres dbname=ecommerce_db sslmode=disable"),
 		},

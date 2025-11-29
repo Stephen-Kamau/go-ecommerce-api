@@ -32,10 +32,10 @@ func (app *application) mount() http.Handler {
 	r.Use(middleware.Logger)
 
 	// cors
-	r.Use(cors.Handler(cors.Options{
+	r.Use(cors.New(cors.Options{
 		AllowedOrigins: []string{"*"},
 		AllowedMethods: []string{"GET", "POST", "PUT", "DELETE"},
-	}))
+	}).Handler)
 
 	// timeout context
 	r.Use(middleware.Timeout(60 * time.Second))
